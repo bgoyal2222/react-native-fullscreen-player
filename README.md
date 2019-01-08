@@ -12,6 +12,8 @@ react-native-video for the video playback.
 npm install --save react-native-video-player react-native-video react-native-vector-icons
 react-native link react-native-video
 react-native link react-native-vector-icons
+
+copy android java files in your project manually with res layout file and add activity in androidmanifest.xml
 ```
 
 ## Props

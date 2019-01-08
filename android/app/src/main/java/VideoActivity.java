@@ -15,7 +15,7 @@ import android.widget.VideoView;
 
 public class VideoActivity extends AppCompatActivity {
     private String videoPath;
-
+    private  Integer duration;
     private static ProgressDialog progressDialog;
     VideoView myVideoView;
 
@@ -28,6 +28,7 @@ public class VideoActivity extends AppCompatActivity {
         if(i != null){
             myVideoView = (VideoView) findViewById(R.id.videoView);
             videoPath = i.getStringExtra("VIDEO_URL");
+            duration = i.getIntExtra ("DURATION",0);
             progressDialog = ProgressDialog.show(VideoActivity.this, "", "Buffering video...", true);
             progressDialog.setCancelable(true);
             PlayVideo();
@@ -53,6 +54,7 @@ public class VideoActivity extends AppCompatActivity {
                 public void onPrepared(MediaPlayer mp) {
                     progressDialog.dismiss();
                     myVideoView.start();
+                    myVideoView.seekTo(duration);
                 }
             });
 

@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Image, ImageBackground, Platform, StyleSheet, TouchableOpacity, View, ViewPropTypes } from 'react-native';
+import { Image, ImageBackground, Platform, StyleSheet, TouchableOpacity, View, ViewPropTypes , NativeModules } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Video from 'react-native-video'; // eslint-disable-line
 
@@ -239,7 +239,7 @@ export default class VideoPlayer extends Component {
     if(Platform.OS === "android")
     {
       var uri = this.props.video.uri;
-      NativeModules.BridgeModule.showFullscreen(uri);
+      NativeModules.BridgeModule.showFullscreen(uri,parseInt(this.state.progress * this.state.duration)*1000);
     }
     else
     {
@@ -559,7 +559,7 @@ VideoPlayer.propTypes = {
   paused: PropTypes.bool,
   defaultMuted: PropTypes.bool,
   muted: PropTypes.bool,
-  style: View.propTypes.style,
+  style: PropTypes.style,
   controlsTimeout: PropTypes.number,
   disableControlsAutoHide: PropTypes.bool,
   loop: PropTypes.bool,
@@ -570,20 +570,20 @@ VideoPlayer.propTypes = {
   pauseOnPress: PropTypes.bool,
   fullScreenOnLongPress: PropTypes.bool,
   customStyles: PropTypes.shape({
-    wrapper: View.propTypes.style,
-    video: Video.propTypes.style,
-    videoWrapper: View.propTypes.style,
-    controls: View.propTypes.style,
+    wrapper: PropTypes.style,
+    video: PropTypes.style,
+    videoWrapper: PropTypes.style,
+    controls: PropTypes.style,
     playControl: TouchableOpacity.propTypes.style,
     controlButton: TouchableOpacity.propTypes.style,
     controlIcon: Icon.propTypes.style,
     playIcon: Icon.propTypes.style,
-    seekBar: View.propTypes.style,
-    seekBarFullWidth: View.propTypes.style,
-    seekBarProgress: View.propTypes.style,
-    seekBarKnob: View.propTypes.style,
-    seekBarKnobSeeking: View.propTypes.style,
-    seekBarBackground: View.propTypes.style,
+    seekBar: PropTypes.style,
+    seekBarFullWidth: PropTypes.style,
+    seekBarProgress: PropTypes.style,
+    seekBarKnob: PropTypes.style,
+    seekBarKnobSeeking: PropTypes.style,
+    seekBarBackground: PropTypes.style,
     thumbnail: Image.propTypes.style,
     playButton: TouchableOpacity.propTypes.style,
     playArrow: Icon.propTypes.style,
