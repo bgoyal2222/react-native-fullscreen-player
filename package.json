@@ -1,6 +1,6 @@
 {
   "name": "react-native-fullscreen-player",
-  "version": "0.1.1",
+  "version": "0.1.7",
   "description": "A video full screen player for React Native with controls",
   "main": "index.js",
   "scripts": {
